@@ -4,6 +4,10 @@ class Jogador extends Pessoa {
     public Time time;
     public int numCamisa;
 
+    public Jogador(Time time, int numCamisa){
+        this.numCamisa = numCamisa;
+        this.time = time;
+    }
 
     public Time getTime() {
         return time;
