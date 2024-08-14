@@ -60,7 +60,7 @@ herdados pelas sub-classes
 
 
 ### 2. Qual a diferença entre agregação e composição? Dê exemplos com código/UML. <hr>
-- Código:   
+- [Códigos do exemplo](https://github.com/Hactchubas/POO_git/tree/master/Portifólio%20B/Q2/Code/Q2/src)
   <img src="./Q2/Assets/Q2_diagram.png" alt="Diagram of the Parking Lot Classes" /> 
 
 ### 3. Explique o que é herança? Explique como funcionam os mecanismos de sobreposição (override) e de sobrecarga (overload) de métodos<hr>
