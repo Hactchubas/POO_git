@@ -1,10 +1,10 @@
 ### Kauã Souza Maia - 536732
 
-## [LISTA DE EXERCÍCIOS – Associações e Herança (link para Repositório)]() 
+## [LISTA DE EXERCÍCIOS – Associações e Herança (link para Repositório)](https://github.com/Hactchubas/POO_git/tree/master/Portifólio%20B) 
 
 
 ### 1. Quais são as associações presentes na UM? Quais são as suas propriedades e como essas associações são implementadas no código-fonte (Java, C++ ou C#)? <hr>
-- Associação Simples
+- Associação Simples - [Código](https://github.com/Hactchubas/POO_git/tree/master/Portifólio%20B/Q1/Code/Q1/src/simple_assoc)
   - É um dos relacionamentos mais básico entre dois objetos, em que representa que um está relacionado a outro.
   - Propriedades: 
     - Multiplicidade: Quantifica como uma classe está relacionada a outra em questões numéricas. 
@@ -23,7 +23,7 @@
 <br>
 <br>
 
-- Agregação
+- Agregação - [Código](https://github.com/Hactchubas/POO_git/tree/master/Portifólio%20B/Q1/Code/Q1/src/agreg)
   - É uma forma especial de associação que demonstra que um objetp precisa ser complementado por um objeto de outra classe.
   - Relação "Todo-Parte":
     - objeto-todo: Parte maior, que é composta pelas partes.
@@ -32,7 +32,7 @@
 
     <img src="./Q1/Assets/Q1_diagram_agreg.png" alt="Diagram of the Parking Lot Classes" />
 
-- Composição
+- Composição - [Código](https://github.com/Hactchubas/POO_git/tree/master/Portif%C3%B3lio%20B/Q1/Code/Q1/src/agreg)
   - Uma variação do tipo agregação em que o vínculo entre objetos-todo e objetos-parte é mais forte
   - Objetos-parte têm que pertencer ao objeto-todo:
     - O todo não existe (ou não faz sentido) sem as partes
@@ -41,7 +41,7 @@
   
     <img src="./Q1/Assets/Q1_diagram_comp.png" alt="Diagram of the Parking Lot Classes" />
 
-- Especialização / Generalização (Herança)
+- Especialização / Generalização (Herança) - [Código](https://github.com/Hactchubas/POO_git/tree/master/Portif%C3%B3lio%20B/Q1/Code/Q1/src/agreg)
   - Identificar super-classe (geral) e subclasses (especializadas)
     - Semântica “é um”
     - Tudo que a classe geral pode fazer, as classes específicas também podem
@@ -49,7 +49,7 @@
 herdados pelas sub-classes 
     <img src="./Q1/Assets/Q1_diagram_heran.png" alt="Diagram of the Parking Lot Classes" /> 
 
-- Dependência
+- Dependência - [Código](https://github.com/Hactchubas/POO_git/tree/master/Portif%C3%B3lio%20B/Q1/Code/Q1/src/agreg)
   - Identifica uma ligação fraca entre objetos de duas classes
   - Representado por uma reta tracejada entre duas classes com uma seta na ponta que indica a dependência (no exemplo: DVD depende de Funcionario) 
 <img src="./Q1/Assets/Q1_diagram_depend.png" alt="Diagram of the Parking Lot Classes" /> 
