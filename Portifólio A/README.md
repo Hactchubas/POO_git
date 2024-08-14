@@ -239,4 +239,4 @@ app de investimentos; agenda pessoal; carteira de criptomoedas; controle de pont
 de um shopping; locadora de jogos físicos para consoles de videogame; posto de gasolina; farmácia; controle de
 acesso a um prédio inteligente.
 
-<img src="./Diagram/Q7_classes.png" alt="Diagram of the Parking Lot System" style="background-color:white; padding:10px;" />
+<img src="./Diagram/Q7_classes.png" alt="Diagram of the Parking Lot Classes" style="background-color:white;" />
