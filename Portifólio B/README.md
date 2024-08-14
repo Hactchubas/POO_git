@@ -157,7 +157,7 @@ public class Pessoa {
 ### 3. Explique o que é herança? Explique como funcionam os mecanismos de sobreposição (override) e de sobrecarga (overload) de métodos<hr>
   - #### a) Implemente um pequeno programa ilustrando esses três conceitos.
     - A sobrecarga (overloading) ocorre quando você mantém o mesmo nome do método, mas altera o número ou o tipo de parâmetros. A sobrescrita (overriding) acontece quando você mantém o mesmo nome e assinatura do método, mas altera a implementação. Além disso, é possível sobrecarregar métodos privados e estáticos, mas não é possível sobrescrevê-los.
-    - 
+  
 ```java    
 class Employee {
     private String name;
@@ -256,5 +256,138 @@ public class Main {
 ```
 
 ### 4. Desenvolva uma discussão sobre o recurso de herança múltipla, seus perigos e suas oportunidades.<hr>
+A herança múltipla é um recurso que torna capaz que uma classe (subclasse) herde de mais de uma classe (superclasses). Herdando então todos os atributos e métodos das superclasses.<br><br>
+Isso cria algumas vantagens e utilidades como facilitar o reuso de parte de código, prevenindo a duplicação, fazendo com que uma classe possa aproveitar funcionalidades de diversas classes base, tornando assim modular a manutenção do código, por exemplo:
+  - Uma classe `A` herde das classes `B` e `C`, e uma funcionalidade de `A` parou de funcionar, pode ser mais fácil entender e corrigir essa funcionalidade se eu sei que ela é específica de `C`, assim consertando `C` eu garanto que todas as instâncias de `A` funcionem.<br><br>
+  
+Legal, muito interessante, no entanto essa é uma faca de dois gumes. Pois imagine que uma classe herde  de muitas outras, isso pode criar um clomplexibilidade tão grande que torne difícil determinar onde está o problema e atacar o ponto do código que o está causando de forma efetiva.<br><br>
+Ademais, imagine agora os problemas que podem aparecer quando classes diferentes por ventura possuem métodos e atributos com o mesmo nome, como o código vai saber qual e quando usar? Cria-se um problema de ambiguidade, então para resolver acaba tornando mais código e mais trabalho aquilo que deveria ser um simplificador da questão.<br><br>
+Em conclusão, a herança múltipla é uma ferramenta poderosa na programação orientada a objetos, capaz de oferecer grande flexibilidade e reuso de código. No entanto, os desafios e perigos associados, como a ambiguidade de métodos, a complexidade de manutenção e os conflitos de atributos, exigem que ela seja utilizada com cautela. Muitas linguagens modernas, como Java e C#, evitam herança múltipla direta e preferem o uso de interfaces como uma maneira mais segura e controlada de implementar múltiplos comportamentos, minimizando os problemas e ajudando a criar sistemas mais robustos e fáceis de manter.
 
-### 5. Quais as vantagens e desvantagens de usar composição no lugar da herança? Essa é talvez a questão mais importante da disciplina!<hr>
+### 5. Quais as vantagens e desvantagens de usar composição no lugar da herança? Essa é talvez a questão mais importe da disciplina!<hr>
+
+Herança é útil para situações onde existe uma clara relação "é-um" e onde é necessário compartilhar comportamento comum entre classes relacionadas. No entanto, a composição oferece maior flexibilidade e modularidade, tornando-se uma escolha melhor para sistemas complexos ou quando se deseja desacoplar as classes e promover a reutilização de componentes. A decisão entre usar herança ou composição depende do contexto específico e dos requisitos do sistema que você está desenvolvendo.
+- Herança:
+  - Vantagem: Compartilhamento de código entre classes relacionadas (Carro e Moto herdam comportamento de Veiculo).
+  - Desvantagem: Se a hierarquia se tornar complexa, pode ser difícil de manter e estender. Por exemplo, se precisarmos criar uma nova classe Bicicleta, que não tem um motor, a herança pode não ser apropriada.
+  
+```java
+package inheritance;
+// Classe base Veiculo
+public class Veiculo {
+    String modelo;
+    int ano;
+
+    public void acelerar() {
+        System.out.println("O veículo está acelerando.");
+    }
+}
+```
+```java
+package inheritance;
+// Subclasse Moto que herda de Veiculo
+class Moto extends Veiculo {
+    boolean temSidecar;
+    public void empinar() {
+        System.out.println("A moto está empinando.");
+    }
+}
+```
+```java
+package inheritance;
+// Subclasse Carro que herda de Veiculo
+class Carro extends Veiculo {
+    int numeroDePortas;
+    public void abrirPortaMalas() {
+        System.out.println("Abrindo o porta-malas.");
+    }
+}
+
+```
+```java
+package inheritance;
+public class Inheritance {
+    public static void main(String[] args) {
+        Carro carro = new Carro();
+        carro.modelo = "Sedan";
+        carro.ano = 2020;
+        carro.numeroDePortas = 4;
+        carro.acelerar();
+        carro.abrirPortaMalas();
+
+        Moto moto = new Moto();
+        moto.modelo = "Esportiva";
+        moto.ano = 2021;
+        moto.temSidecar = false;
+        moto.acelerar();
+        moto.empinar();
+    }
+}
+```
+- Composição
+  - Vantagem: Maior flexibilidade. O comportamento de aceleração é delegado ao componente Motor, o que permite a reutilização do componente em várias classes (Carro e Moto). O código é mais modular e fácil de manter, pois o Motor pode ser facilmente substituído ou alterado sem impactar diretamente as classes Carro e Moto.
+  - Desvantagem: Potencial aumento na complexidade do código, especialmente se envolver muitos componentes diferentes. Por exemplo, se quisermos adicionar mais comportamentos que não estão diretamente relacionados ao motor, precisaremos adicionar mais componentes.
+
+```java
+package composition;
+// Componente que define o comportamento de acelerar
+class Motor {
+    public void acelerar() {
+        System.out.println("O motor está acelerando.");
+    }
+}
+
+```
+```java
+// Classe Carro usando composição
+public class Carro {
+    public String modelo;
+    public int ano;
+    public int numeroDePortas;
+    Motor motor = new Motor(); // Composição
+
+    public void abrirPortaMalas() {
+        System.out.println("Abrindo o porta-malas.");
+    }
+    public void acelerar() {
+        motor.acelerar(); // Delegando comportamento para o motor
+    }
+}
+```
+```java
+package composition;
+// Classe Moto usando composição
+public class Moto {
+    public String modelo;
+    public int ano;
+    public boolean temSidecar;
+    Motor motor = new Motor(); // Composição
+
+    public void empinar() {
+        System.out.println("A moto está empinando.");
+    }
+    public void acelerar() {
+        motor.acelerar(); // Delegando comportamento para o motor
+    }
+}
+```
+```java
+package composition;
+public class Composition {
+    public static void main(String[] args) {
+        Carro carro = new Carro();
+        carro.modelo = "Sedan";
+        carro.ano = 2020;
+        carro.numeroDePortas = 4;
+        carro.acelerar();
+        carro.abrirPortaMalas();
+
+        Moto moto = new Moto();
+        moto.modelo = "Esportiva";
+        moto.ano = 2021;
+        moto.temSidecar = false;
+        moto.acelerar();
+        moto.empinar();
+    }
+}
+```
