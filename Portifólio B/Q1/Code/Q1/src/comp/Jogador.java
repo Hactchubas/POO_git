@@ -5,9 +5,7 @@ import java.util.List;
 public class Jogador {
 
   public String nome;
-
   public String posicao;
-
-    public List<Time> time;
+  public Time time;
 
 }

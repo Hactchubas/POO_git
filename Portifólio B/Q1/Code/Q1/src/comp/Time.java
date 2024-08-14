@@ -5,7 +5,6 @@ import java.util.List;
 public class Time {
 
   public String nome;
-
-    public List<Jogador> jogador;
+  public List<Jogador> jogadores;
 
 }
