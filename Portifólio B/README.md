@@ -24,7 +24,7 @@
 <br>
 
 - Agregação - [Código](https://github.com/Hactchubas/POO_git/tree/master/Portifólio%20B/Q1/Code/Q1/src/agreg)
-  - É uma forma especial de associação que demonstra que um objetp precisa ser complementado por um objeto de outra classe.
+  - É uma forma especial de associação que demonstra que um objeto precisa ser complementado por um objeto de outra classe.
   - Relação "Todo-Parte":
     - objeto-todo: Parte maior, que é composta pelas partes.
     - objeto-parte: Parte menor, que compõe o objeto-todo
@@ -41,25 +41,31 @@
   
     <img src="./Q1/Assets/Q1_diagram_comp.png" alt="Diagram of the Parking Lot Classes" />
 
+
 - Especialização / Generalização (Herança) - [Código](https://github.com/Hactchubas/POO_git/tree/master/Portif%C3%B3lio%20B/Q1/Code/Q1/src/agreg)
   - Identificar super-classe (geral) e subclasses (especializadas)
     - Semântica “é um”
     - Tudo que a classe geral pode fazer, as classes específicas também podem
   - Todos os atributos e métodos definidos na super-classe são
 herdados pelas sub-classes 
+
     <img src="./Q1/Assets/Q1_diagram_heran.png" alt="Diagram of the Parking Lot Classes" /> 
+
 
 - Dependência - [Código](https://github.com/Hactchubas/POO_git/tree/master/Portif%C3%B3lio%20B/Q1/Code/Q1/src/agreg)
   - Identifica uma ligação fraca entre objetos de duas classes
   - Representado por uma reta tracejada entre duas classes com uma seta na ponta que indica a dependência (no exemplo: DVD depende de Funcionario) 
-<img src="./Q1/Assets/Q1_diagram_depend.png" alt="Diagram of the Parking Lot Classes" /> 
+  
+    <img src="./Q1/Assets/Q1_diagram_depend.png" alt="Diagram of the Parking Lot Classes" /> 
 
 
-1. #### Qual a diferença entre agregação e composição? Dê exemplos com código/UML.
+### 2. Qual a diferença entre agregação e composição? Dê exemplos com código/UML. <hr>
+- Código:   
+  <img src="./Q2/Assets/Q2_diagram.png" alt="Diagram of the Parking Lot Classes" /> 
 
-2. #### Explique o que é herança? Explique como funcionam os mecanismos de sobreposição (override) e de sobrecarga (overload) de métodos
-- ##### a) Implemente um pequeno programa ilustrando esses três conceitos.
+### 3. Explique o que é herança? Explique como funcionam os mecanismos de sobreposição (override) e de sobrecarga (overload) de métodos<hr>
+  - #### a) Implemente um pequeno programa ilustrando esses três conceitos.
 
-1. #### Desenvolva uma discussão sobre o recurso de herança múltipla, seus perigos e suas oportunidades.
+### 4. Desenvolva uma discussão sobre o recurso de herança múltipla, seus perigos e suas oportunidades.<hr>
 
-2. #### Quais as vantagens e desvantagens de usar composição no lugar da herança? Essa é talvez a questão mais importante da disciplina!
+### 5. Quais as vantagens e desvantagens de usar composição no lugar da herança? Essa é talvez a questão mais importante da disciplina!<hr>
