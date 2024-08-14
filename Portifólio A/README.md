@@ -1,7 +1,7 @@
 
 ### Kauã Souza Maia - 536732
 
-## LISTA DE EXERCÍCIOS – POO e UML INTRODUTÓRIAS 
+## [LISTA DE EXERCÍCIOS – POO e UML INTRODUTÓRIAS (link para Repositório)](https://github.com/Hactchubas/POO_git/tree/master/Portifólio%20A) 
 
 1. ####  Descreva, com suas palavras, o que são classes, objetos e instâncias. Dê exemplos:<hr>
  - <b>Classes:</b> São definições genéricas de partes reutilizáveis do nosso código, são elementos base da programação orientada a objetos, e funcionam para determinar a estrutura, relacionamentos e funcionalidades de partes do código.
@@ -236,4 +236,4 @@ app de investimentos; agenda pessoal; carteira de criptomoedas; controle de pont
 de um shopping; locadora de jogos físicos para consoles de videogame; posto de gasolina; farmácia; controle de
 acesso a um prédio inteligente.
 
-<img src="./Diagram/Q7_classes.png" alt="Diagram of the Parking Lot Classes" style="background-color:white;" />
+<img src="./Diagram/Q7_classes.png" alt="Diagram of the Parking Lot Classes" />
