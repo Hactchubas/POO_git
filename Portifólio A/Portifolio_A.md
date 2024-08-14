@@ -233,3 +233,10 @@ int main() {
     - Definição: Representa uma relação "é um" entre uma classe base (superclasse) e uma classe derivada (subclasse). A subclasse herda atributos e métodos da superclasse.
     - Representação: Representada por uma linha sólida com uma seta vazada na ponta, apontando para a superclasse.
      
+7. #### O que é um Diagrama de Classes? Quais os elementos que o compõem?<hr> 
+- Crie um diagrama de classes para um projeto à sua escolha. Algumas sugestões: jogo Tetris; iFood simplificado;
+app de investimentos; agenda pessoal; carteira de criptomoedas; controle de ponto; sistema de estacionamento
+de um shopping; locadora de jogos físicos para consoles de videogame; posto de gasolina; farmácia; controle de
+acesso a um prédio inteligente.
+
+<img src="./Diagram/Q7_classes.png" alt="Diagram of the Parking Lot System" style="background-color:white; padding:10px;" />
