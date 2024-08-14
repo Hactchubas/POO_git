@@ -3,7 +3,7 @@
 
 ## [LISTA DE EXERCÍCIOS – POO e UML INTRODUTÓRIAS (link para Repositório)](https://github.com/Hactchubas/POO_git/tree/master/Portifólio%20A) 
 
-1. ####  Descreva, com suas palavras, o que são classes, objetos e instâncias. Dê exemplos:<hr>
+ ### 1. Descreva, com suas palavras, o que são classes, objetos e instâncias. Dê exemplos:<hr>
  - <b>Classes:</b> São definições genéricas de partes reutilizáveis do nosso código, são elementos base da programação orientada a objetos, e funcionam para determinar a estrutura, relacionamentos e funcionalidades de partes do código.
   ``` java
   public class MinhaCLasse {
@@ -23,7 +23,7 @@ Qual o propósito dos atributos na orientação a objetos? Dê exemplos
 MinhaClasse objeto = new MinhaClasse();
 ```
 
-2. #### Qual o propósito dos atributos na orientação a objetos? Dê exemplos.<hr>
+ ### 2. Qual o propósito dos atributos na orientação a objetos? Dê exemplos.<hr>
 -  Atributos são partes das anteriormente explicadas "classe", atributos ajudam a definir como uma classe funciona, para salvar o estado de um objeto, encapsular os dados e infoemações de uma classe, manter . <br/> São as partes da classe, que ajudam a definir seus diferentes comportamentos e identidades:
 ``` kotlin
 //  **KOTLIN CODE** 
@@ -50,8 +50,7 @@ fun main() {
 }
 
 ```
-
-3. #### Pra que servem os métodos na orientação a objetos? Dê exemplos.<hr>
+ ### 3. Pra que servem os métodos na orientação a objetos? Dê exemplos.<hr>
 -  Enquanto atributos, sobretudo, nos ajudam a definir a natureza de uma classe e seus estados, métodos tem como principal funcionalidade determinar seu funcionamento, os métodos descrevem como aquela classe se comporta e quais as formas de se interagir com ela. 
 
 ```python
@@ -94,7 +93,7 @@ conta_joao.sacar(600)       # João tenta sacar R$600,00, mas o saldo é insufic
 conta_joao.exibir_saldo()   # Exibe o saldo final
 ```
 
-4. #### Como podemos criar (instanciar) e destruir (remover) objetos? Dê exemplos.<hr>
+### 4. Como podemos criar (instanciar) e destruir (remover) objetos? Dê exemplos.<hr>
 - Em java, para criar um objeto você deve fazer a instância da classe utilizando o operador "new" e atribuindo-o a um tipo da classe que será instanciada.
 - Para a destruição manual de objetos em java o que pode ser feito é atribuir null à referência do objeto e chamar
 o coletor de lixo do java que deve liberar o espaço do objeto que havia sido instanciado já que elee não é mais alcançado, pois foram perdidas as referências a ele. 
@@ -128,48 +127,46 @@ public class Principal {
         System.gc();
     }
 }
-
 ```
- - Exemplo em C++, perceba como o processo é bem análogo com instância usando o operador "new", no entando, C++ possui o operador "delete", tornando o ponteiro inválido e a memória devolvida ao sistema.
-  
+- Exemplo em C++, perceba como o processo é bem análogo com instância usando o operador "new", no entando, C++ possui o operador "delete", tornando o ponteiro inválido e a memória devolvida ao sistema.
+
 ```c++
-#include <iostream>
-#include <string>
+  #include <iostream>
+  #include <string>
 
-class Carro {
-private:
-    std::string modelo;
-    int ano;
+  class Carro {
+  private:
+      std::string modelo;
+      int ano;
 
-public:
-    // Construtor
-    Carro(const std::string& modelo, int ano) : modelo(modelo), ano(ano) {}
+  public:
+      // Construtor
+      Carro(const std::string& modelo, int ano) : modelo(modelo), ano(ano) {}
 
-    // Método para exibir detalhes do carro
-    void mostrarDetalhes() const {
-        std::cout << "Modelo: " << modelo << ", Ano: " << ano << std::endl;
-    }
-};
+      // Método para exibir detalhes do carro
+      void mostrarDetalhes() const {
+          std::cout << "Modelo: " << modelo << ", Ano: " << ano << std::endl;
+      }
+  };
 
-int main() {
-    // Criando um objeto da classe Carro usando alocação dinâmica
-    Carro* carro1 = new Carro("Fusca", 1970);
-    carro1->mostrarDetalhes();  // Exibindo os detalhes do carro
+  int main() {
+      // Criando um objeto da classe Carro usando alocação dinâmica
+      Carro* carro1 = new Carro("Fusca", 1970);
+      carro1->mostrarDetalhes();  // Exibindo os detalhes do carro
 
-    // Deletando o objeto para liberar a memória
-    delete carro1;
+      // Deletando o objeto para liberar a memória
+      delete carro1;
 
-    // Após a exclusão, carro1 não deve mais ser usado.
-    // carro1->mostrarDetalhes(); // Isso seria inseguro
+      // Após a exclusão, carro1 não deve mais ser usado.
+      // carro1->mostrarDetalhes(); // Isso seria inseguro
 
-    return 0;
-}
-
+      return 0;
+  }
 ```
 
-5. #### O que é um Diagrama de Casos de Uso (UC, Use Cases)? Quais os elementos que o compõem?<hr> 
+### 5. O que é um Diagrama de Casos de Uso (UC, Use Cases)? Quais os elementos que o compõem?<hr> 
 
-    
+
 - O diagrama de casos de uso é uma ferramenta visual utilizada na engenharia de software, e no desenvolvimento de software que ajuda a entender de forma ampla as interações e relações entre o usuário e o sistema.</br>Sobre os elementos que compoem os diagramas de casos de uso:
   - Atores:
     - Definição: São as entidades que interagem com o sistema, geralmente pessoas, mas também podem ser outros sistemas ou dispositivos.
@@ -186,7 +183,7 @@ int main() {
 
       -   Definição: O sistema que está sendo modelado. É representado por um retângulo que contém todos os casos de uso.
 
-6. #### O que é um Diagrama de Classes? Quais os elementos que o compõem?<hr> 
+### 6. O que é um Diagrama de Classes? Quais os elementos que o compõem?<hr> 
 
     
 - O diagrama d eclasse é uma representação visual das clsses de um sistema, nele estão inclusos, dependendo da necessidade de quem o faz, as classes, seu atributos, métodos e uma das partes mais importantes quesão as relações, o que ajuda a enxergar como o sistema se comporta e como seu elementos estão relacionados, podendo perceber de forma simples relações de herança, implementação, agrupamento etc..</br>Sobre os elementos que compoem os diagramas de class:
@@ -229,8 +226,8 @@ int main() {
 
     - Definição: Representa uma relação "é um" entre uma classe base (superclasse) e uma classe derivada (subclasse). A subclasse herda atributos e métodos da superclasse.
     - Representação: Representada por uma linha sólida com uma seta vazada na ponta, apontando para a superclasse.
-     
-7. #### O que é um Diagrama de Classes? Quais os elementos que o compõem?<hr> 
+   
+### 7. O que é um Diagrama de Classes? Quais os elementos que o compõem?<hr> 
 - Crie um diagrama de classes para um projeto à sua escolha. Algumas sugestões: jogo Tetris; iFood simplificado;
 app de investimentos; agenda pessoal; carteira de criptomoedas; controle de ponto; sistema de estacionamento
 de um shopping; locadora de jogos físicos para consoles de videogame; posto de gasolina; farmácia; controle de
