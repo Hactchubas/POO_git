@@ -1,6 +1,6 @@
 ### Kauã Souza Maia - 536732
 
-## [LISTA DE EXERCÍCIOS – Associações e Herança (link para Repositório)](https://github.com/Hactchubas/POO_git/tree/master/Portifólio%20B) 
+## [LISTA DE EXERCÍCIOS – Polimorfismo, Classes Abstratas e Interfaces (link para Repositório)](https://github.com/Hactchubas/POO_git/tree/master/Portifólio%20C) 
 
 
 ### 1. Desenvolva uma discussão sobre (a) “O que é o polimorfismo” e (b) “como esse pilar da POO pode ser implementado”. Sugestão: abordar os conceitos de ligação antecipada (early binding) e ligação tardia (late binding)  <hr>
@@ -141,7 +141,6 @@ Exemplo: Upcasting e Downcasting em um Sistema de Gerenciamento de Usuários
   -   Explicação do Downcasting: No método verificarERealizarAcao, estamos verificando se o usuario é uma instância de Admin usando instanceof. Se for, realizamos o downcasting para que possamos acessar propriedades ou métodos específicos da classe Admin. Se não for, tratamos como um RegularUser.
 
 ```java 
-import java.lang.reflect.Array;
 import java.util.*;
 
 // Classe base para usuários
@@ -184,18 +183,21 @@ class Admin extends User {
 }
 
 public class Q2 {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         /**
          * Upcasting
          **/
-        User usuario1 = new RegularUser("Alice"); // Upcasting implícito
-        User usuario2 = new Admin("Bob"); // Upcasting implícito
+        System.out.println("Upcasting --------");
+        User usuario1 = new RegularUser("Kauã"); // Upcasting implícito
+        User usuario2 = new Admin("Gilvan"); // Upcasting implícito
 
         // Chama a ação específica do usuário
         usuario1.realizarAcao(); // Output: "Alice está realizando uma ação de usuário regular."
         usuario2.realizarAcao(); // Output: "Bob está realizando uma ação de administrador."
 
-        // Forma de generalizar esse objetos pondo em uma lista da classe genérica apesar de serem diferentes
+        // Perceba que o upcasting é implicito, pois temos sempre certeza que cada subclasse é uma especialização da superclasse
+        // e assim pode ser tratada como uma instância dela.
+        // Forma de generalizar esse objetos pondo em uma lista da classe genérica apesar de serem especializadas
         ArrayList<User> userList = new ArrayList<User>();
         userList.add(usuario1);
         userList.add(usuario2);
@@ -205,20 +207,36 @@ public class Q2 {
         }
         // Alice: class RegularUser
         // Bob: class Admin
-
+        System.out.println("--------");
+        System.out.println("Downcasting --------");
         /**
-         * Downcasting 
+         * Downcasting
          */
-        User usuario3 = new RegularUser("Alice"); // Upcasting
-        User usuario4 = new Admin("Bob"); // Upcasting
 
-        verificarERealizarAcao(usuario3); // Verifica e realiza ação
-        verificarERealizarAcao(usuario4); // Verifica e realiza ação
+        verificarERealizarAcao(usuario1); // Verifica e realiza ação
+        verificarERealizarAcao(usuario2); // Verifica e realiza ação
 
-
+        // Aqui outro exemplo do porque o downcast não é tão natural quanto o upcasting
+        // Não temos como ter certeza se as instâcias de user são do tipo específica que se quer usar.
+        ArrayList<Admin> userList2 = new ArrayList<>();
+        for (User user : userList){
+            adicionarALista(user, userList2);
+        }
+        System.out.println("--------");
     }
 
-    // Downcating apresenta riscos a mais ao ser utilizado 
+    public static  void adicionarALista(User user, ArrayList<Admin> list) throws Exception{
+        try{
+            Admin admin1 = (Admin) user;
+            if(list.add(admin1)){
+                System.out.println(admin1.getNome() +": "+admin1.getClass()+" adicionado à lista de Admin com sucesso");
+            }
+        } catch (Exception e){
+            System.out.println("Falha ao adicionar "+ user.getNome() +" a lista de Admin: "+ e);
+        }
+    }
+
+    // Downcating apresenta riscos a mais ao ser utilizado
     // e por isso é importante tratar e/ou pensar nisso quando usar no código.
     public static void verificarERealizarAcao(User usuario) {
         if (usuario instanceof Admin) { // Verificação antes do downcasting
@@ -325,3 +343,129 @@ public class Main {
     }
 }
 ```
+
+### 4. Qual a função das interfaces em POO? Liste e explique as diferenças entre interfaces e classes abstratas.Também discuta sobre como as diferentes linguagem podem entregar essa característica da POO de formas diferentes. <hr> 
+
+- Uma interface é como um contrato que define um conjunto de método que as classes que quiserem "realizar"/"implementar" aquela interface devem também implementar obrigatoriamente seus métodos. Definindo um comportamento comum entre várias classes independente de hierarquia de herança.
+- As principais funções de uma interface:
+  - Definir o contrato: a interface define para as classes implementadoras o que deve ser seguido, especificando quais métodos deve ser fornecidos.
+  - Implementação multipla: Diferente das classes abstratas, uma classe pode implementar multiplas interfaces, permitindo multiplos comportamentos.
+  - Reusabilidade e flexibilidade: Permitem que o mesmo código funcione com diferentes implementações de uma interface, facilitando a troca e o reuso de implementações. 
+
+- Algumas diferenças entre Classes Abstratas e Interfaces:
+
+| Aspecto | Interface | Classe Abstrata |
+|-------|------|------|
+|Métodos|Métodos são implicitamente públicos e abstratos (exceto métodos estáticos e default em algumas linguagens)|Pode ter métodos abstratos (sem implementação) e concretos (com implementação)|
+|Herança| Uma classe pode implementar várias interfaces | Uma classe pode estender apenas uma classe abstrata (herança simples) |
+|Atributos| Não pode ter atributos de instância, apenas constantes (em algumas linguagens, como Java) | Pode ter atributos de instância e métodos concretos |
+|Construtores| Não pode ter construtores | Pode ter construtores |
+|Modificadores de Acesso| Todos os métodos são públicos por padrão | Métodos podem ter diferentes modificadores de acesso (público, protegido) |
+|Objetos| Não pode ser instanciada diretamente | Pode ser instanciada se tiver métodos concretos |
+|Uso| Ideal para definir comportamentos que podem ser compartilhados por classes não relacionadas | Ideal para definir uma hierarquia de classes com comportamento comum |
+
+
+- Java
+  - Interface: Em Java, interfaces são tipos que podem conter apenas assinaturas de métodos (e, a partir do Java 8, métodos default e estáticos) e constantes (campos públicos, estáticos e finais). Classes ou outras interfaces podem implementar interfaces usando a palavra-chave implements.
+  - Uso: Interfaces em Java são usadas para definir contratos que as classes devem seguir, permitindo que diferentes classes possam ser tratadas de forma polimórfica.
+``` java
+interface Payment {
+    void pay(double amount);
+}
+
+class CreditCardPayment implements Payment {
+    @Override
+    public void pay(double amount) {
+        // Implementação do pagamento via cartão de crédito
+    }
+}
+
+```
+
+  - C#
+      - Interface: C# tem um sistema de interfaces muito semelhante ao de Java. Interfaces em C# também definem contratos que as classes podem implementar.
+      - Uso: As interfaces em C# também suportam métodos padrão (default) desde a versão C# 8.0, permitindo uma implementação padrão que pode ser compartilhada entre todas as classes que a implementam.
+``` csharp
+interface IPayment {
+    void Pay(double amount);
+}
+
+class CreditCardPayment : IPayment {
+    public void Pay(double amount) {
+        // Implementação do pagamento via cartão de crédito
+    }
+}
+
+```
+  - Python
+    - Interface: Python não tem uma estrutura formal para interfaces como Java ou C#. No entanto, o conceito de interfaces pode ser simulado usando classes abstratas (ABC - Abstract Base Class) e módulos como abc.
+    - Uso: Python usa a "duck typing" para verificar se um objeto implementa os métodos necessários. Se uma classe possui os métodos exigidos, ela pode ser tratada como uma implementação dessa "interface"
+``` python
+
+from abc import ABC, abstractmethod
+
+class Payment(ABC):
+    @abstractmethod
+    def pay(self, amount):
+        pass
+
+class CreditCardPayment(Payment):
+    def pay(self, amount):
+        # Implementação do pagamento via cartão de crédito
+        pass
+
+```
+
+  - JavaScript (ES6+)
+    - Interface: JavaScript, como uma linguagem orientada a protótipos, não tem interfaces formais. Porém, o conceito de interfaces pode ser implementado indiretamente através de classes e verificações manuais.
+    - Uso: Interfaces em JavaScript podem ser simuladas criando classes ou usando funções e garantindo que objetos tenham os métodos necessários para cumprir o contrato desejado.
+  
+``` javascript
+class Payment {
+    pay(amount) {
+        throw new Error("Method 'pay()' must be implemented.");
+    }
+}
+
+class CreditCardPayment extends Payment {
+    pay(amount) {
+        // Implementação do pagamento via cartão de crédito
+    }
+}
+```
+  - Go
+    - Interface: Go tem um sistema de interfaces muito distinto. Interfaces em Go são satisfatórias de forma implícita. Se um tipo implementa os métodos de uma interface, ele automaticamente implementa essa interface, sem a necessidade de declaração explícita.
+    - Uso: Isso permite uma maior flexibilidade e um forte suporte ao polimorfismo.
+``` golang
+type Payment interface {
+    Pay(amount float64)
+}
+
+type CreditCardPayment struct {}
+
+func (cc CreditCardPayment) Pay(amount float64) {
+    // Implementação do pagamento via cartão de crédito
+}
+```
+
+  - Rust
+    - Interface: Em Rust, interfaces são chamadas de "traits". Traits definem métodos que podem ser implementados por tipos (structs, enums). Ao contrário de interfaces em Java e C#, as traits em Rust podem ter métodos com implementação.
+    - Uso: Traits permitem que você defina comportamento compartilhado em múltiplos tipos.
+
+```rust
+Copiar código
+trait Payment {
+    fn pay(&self, amount: f64);
+}
+
+struct CreditCardPayment;
+
+impl Payment for CreditCardPayment {
+    fn pay(&self, amount: f64) {
+        // Implementação do pagamento via cartão de crédito
+    }
+}
+```
+
+- Conclusão:
+A implementação de interfaces e a entrega desse conceito de POO variam amplamente entre linguagens, dependendo de suas filosofias de design e objetivos. Em linguagens como Java e C#, o conceito é formal e estruturado, enquanto em linguagens como Python e JavaScript, o conceito é mais implícito e flexível. Em Go e Rust, as interfaces ou traits são potentes e permitem alto grau de polimorfismo e reuso de código.

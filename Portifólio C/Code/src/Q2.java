@@ -40,18 +40,21 @@ class Admin extends User {
 }
 
 public class Q2 {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         /**
          * Upcasting
          **/
-        User usuario1 = new RegularUser("Alice"); // Upcasting implícito
-        User usuario2 = new Admin("Bob"); // Upcasting implícito
+        System.out.println("Upcasting --------");
+        User usuario1 = new RegularUser("Kauã"); // Upcasting implícito
+        User usuario2 = new Admin("Gilvan"); // Upcasting implícito
 
         // Chama a ação específica do usuário
         usuario1.realizarAcao(); // Output: "Alice está realizando uma ação de usuário regular."
         usuario2.realizarAcao(); // Output: "Bob está realizando uma ação de administrador."
 
-        // Forma de generalizar esse objetos pondo em uma lista da classe genérica apesar de serem diferentes
+        // Perceba que o upcasting é implicito, pois temos sempre certeza que cada subclasse é uma especialização da superclasse
+        // e assim pode ser tratada como uma instância dela.
+        // Forma de generalizar esse objetos pondo em uma lista da classe genérica apesar de serem especializadas
         ArrayList<User> userList = new ArrayList<User>();
         userList.add(usuario1);
         userList.add(usuario2);
@@ -61,17 +64,33 @@ public class Q2 {
         }
         // Alice: class RegularUser
         // Bob: class Admin
-
+        System.out.println("--------");
+        System.out.println("Downcasting --------");
         /**
          * Downcasting
          */
-        User usuario3 = new RegularUser("Alice"); // Upcasting
-        User usuario4 = new Admin("Bob"); // Upcasting
 
-        verificarERealizarAcao(usuario3); // Verifica e realiza ação
-        verificarERealizarAcao(usuario4); // Verifica e realiza ação
+        verificarERealizarAcao(usuario1); // Verifica e realiza ação
+        verificarERealizarAcao(usuario2); // Verifica e realiza ação
 
+        // Aqui outro exemplo do porque o downcast não é tão natural quanto o upcasting
+        // Não temos como ter certeza se as instâcias de user são do tipo específica que se quer usar.
+        ArrayList<Admin> userList2 = new ArrayList<>();
+        for (User user : userList){
+            adicionarALista(user, userList2);
+        }
+        System.out.println("--------");
+    }
 
+    public static  void adicionarALista(User user, ArrayList<Admin> list) throws Exception{
+        try{
+            Admin admin1 = (Admin) user;
+            if(list.add(admin1)){
+                System.out.println(admin1.getNome() +": "+admin1.getClass()+" adicionado à lista de Admin com sucesso");
+            }
+        } catch (Exception e){
+            System.out.println("Falha ao adicionar "+ user.getNome() +" a lista de Admin: "+ e);
+        }
     }
 
     // Downcating apresenta riscos a mais ao ser utilizado
