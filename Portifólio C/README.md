@@ -469,3 +469,8 @@ impl Payment for CreditCardPayment {
 
 - Conclusão:
 A implementação de interfaces e a entrega desse conceito de POO variam amplamente entre linguagens, dependendo de suas filosofias de design e objetivos. Em linguagens como Java e C#, o conceito é formal e estruturado, enquanto em linguagens como Python e JavaScript, o conceito é mais implícito e flexível. Em Go e Rust, as interfaces ou traits são potentes e permitem alto grau de polimorfismo e reuso de código.
+
+
+### 5. Desenvolva um programa simples (ou não, isso fica a seu critério!) que utilize os conceitos de interface e classe abstrata como formas de favorecer (ou forçar) o polimorfismo<hr> 
+
+  - [Código em kotlin](/Portifólio%20C/Code_Kotlin/src/main/kotlin/Q5/)
